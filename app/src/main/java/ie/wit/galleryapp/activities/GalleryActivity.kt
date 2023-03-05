@@ -4,6 +4,7 @@ import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.google.android.material.snackbar.Snackbar
 import ie.wit.galleryapp.databinding.ActivityGalleryBinding
+import ie.wit.galleryapp.main.MainApp
 import ie.wit.galleryapp.models.GalleryModel
 import timber.log.Timber
 import timber.log.Timber.i
@@ -13,7 +14,7 @@ class GalleryActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityGalleryBinding
     var gallery = GalleryModel()
-    val gallerys = ArrayList<GalleryModel>()
+    lateinit var app : MainApp
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -22,18 +23,16 @@ class GalleryActivity : AppCompatActivity() {
         binding = ActivityGalleryBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        Timber.plant(Timber.DebugTree())
-
+        app = application as MainApp
         i("Gallery Activity started...")
-
         binding.btnAdd.setOnClickListener() {
             gallery.title = binding.galleryTitle.text.toString()
             gallery.description = binding.description.text.toString()
             if (gallery.title.isNotEmpty()) {
-                gallerys.add(gallery.copy())
-                i("add Button Pressed: $gallery.title")
-                for (i in gallerys.indices)
-                { i("Gallery[$i]:${this.gallerys[i]}") }
+                app.gallerys.add(gallery.copy())
+                i("add Button Pressed: $gallery")
+                for (i in app.gallerys.indices)
+                { i("Gallery[$i]:${app.gallerys[i]}") }
 
             }
             else {
