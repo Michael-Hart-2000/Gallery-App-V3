@@ -28,11 +28,13 @@ class GalleryActivity : AppCompatActivity() {
 
         binding.btnAdd.setOnClickListener() {
             gallery.title = binding.galleryTitle.text.toString()
+            gallery.description = binding.description.text.toString()
             if (gallery.title.isNotEmpty()) {
                 gallerys.add(gallery.copy())
                 i("add Button Pressed: $gallery.title")
                 for (i in gallerys.indices)
                 { i("Gallery[$i]:${this.gallerys[i]}") }
+
             }
             else {
                 Snackbar
