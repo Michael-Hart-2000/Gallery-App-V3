@@ -1,4 +1,5 @@
 <resources>
-    <string name="app_name">Gallery App</string>
+    <string name="app_name">Gallery</string>
     <string name="button_addGallery">Add Gallery</string>
+    <string name="hint_galleryTitle">Gallery Title</string>
 </resources>
