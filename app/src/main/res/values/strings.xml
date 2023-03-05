@@ -3,4 +3,5 @@
     <string name="button_addGallery">Add Gallery</string>
     <string name="hint_galleryTitle">Gallery Title</string>
     <string name="hint_galleryDescription">Description </string>
+    <string name="menu_addGallery">Add</string>
 </resources>

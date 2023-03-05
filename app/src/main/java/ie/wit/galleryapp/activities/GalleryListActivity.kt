@@ -3,9 +3,11 @@ package ie.wit.galleryapp.activities
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.LayoutInflater
+import android.view.Menu
 import android.view.ViewGroup
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import ie.wit.galleryapp.R
 import ie.wit.galleryapp.databinding.ActivityGalleryListBinding
 import ie.wit.galleryapp.databinding.CardGalleryBinding
 import ie.wit.galleryapp.main.MainApp
@@ -21,12 +23,19 @@ class GalleryListActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityGalleryListBinding.inflate(layoutInflater)
         setContentView(binding.root)
+        binding.toolbar.title = title
+        setSupportActionBar(binding.toolbar)
 
         app = application as MainApp
 
         val layoutManager = LinearLayoutManager(this)
         binding.recyclerView.layoutManager = layoutManager
         binding.recyclerView.adapter = GalleryAdapter(app.gallerys)
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu): Boolean {
+        menuInflater.inflate(R.menu.menu_main, menu)
+        return super.onCreateOptionsMenu(menu)
     }
 }
 
@@ -56,4 +65,5 @@ class GalleryAdapter constructor(private var gallerys: List<GalleryModel>) :
         }
     }
 }
+
 
