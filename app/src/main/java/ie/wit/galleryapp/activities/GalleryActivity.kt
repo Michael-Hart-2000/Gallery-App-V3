@@ -1,15 +1,18 @@
-package ie.wit.galleryapp
+package ie.wit.galleryapp.activities
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.google.android.material.snackbar.Snackbar
 import ie.wit.galleryapp.databinding.ActivityGalleryBinding
+import ie.wit.galleryapp.models.GalleryModel
 import timber.log.Timber
 import timber.log.Timber.i
 
 class GalleryActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityGalleryBinding
+    var gallery = GalleryModel()
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -22,9 +25,9 @@ class GalleryActivity : AppCompatActivity() {
         i("Gallery Activity started...")
 
         binding.btnAdd.setOnClickListener() {
-            val galleryTitle = binding.galleryTitle.text.toString()
-            if (galleryTitle.isNotEmpty()) {
-                i("add Button Pressed: $galleryTitle")
+            gallery.title = binding.galleryTitle.text.toString()
+            if (gallery.title.isNotEmpty()) {
+                i("add Button Pressed: $gallery.title")
             }
             else {
                 Snackbar
@@ -32,6 +35,7 @@ class GalleryActivity : AppCompatActivity() {
                     .show()
             }
         }
+
 
     }
 }
