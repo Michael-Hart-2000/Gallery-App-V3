@@ -5,9 +5,9 @@ import android.view.Menu
 import android.view.MenuItem
 import androidx.appcompat.app.AppCompatActivity
 import com.google.android.material.snackbar.Snackbar
+import ie.wit.gallery.main.MainApp
 import ie.wit.galleryapp.R
 import ie.wit.galleryapp.databinding.ActivityGalleryBinding
-import ie.wit.galleryapp.main.MainApp
 import ie.wit.galleryapp.models.GalleryModel
 import timber.log.Timber
 import timber.log.Timber.i
@@ -34,14 +34,11 @@ class GalleryActivity : AppCompatActivity() {
             gallery.title = binding.galleryTitle.text.toString()
             gallery.description = binding.description.text.toString()
             if (gallery.title.isNotEmpty()) {
-                app.gallerys.add(gallery.copy())
-                i("add Button Pressed: ${gallery}")
-                for (i in app.gallerys.indices) {
-                    i("Placemark[$i]:${this.app.gallerys[i]}")
-                }
+               // app.gallerys.add(gallery.copy())
+                app.gallerys.create(gallery.copy())
                 setResult(RESULT_OK)
                 finish()
-            }
+                }
             else {
                 Snackbar.make(it,"Please Enter a title", Snackbar.LENGTH_LONG)
                     .show()
