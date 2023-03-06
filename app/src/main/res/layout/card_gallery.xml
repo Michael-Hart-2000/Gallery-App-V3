@@ -27,5 +27,26 @@
             android:layout_below="@id/galleryTitle"
             tools:text="A Description" />
 
+        <TextView
+            android:id="@+id/origin"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/galleryTitle"
+            tools:text="A Place of Birth" />
+
+        <TextView
+            android:id="@+id/style"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/galleryTitle"
+            tools:text="Artist Style" />
+
+        <TextView
+            android:id="@+id/artefact"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/galleryTitle"
+            tools:text="Most Famous Work of Art" />
+
     </RelativeLayout>
 </androidx.cardview.widget.CardView>
