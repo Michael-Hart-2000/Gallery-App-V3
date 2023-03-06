@@ -1,25 +1,23 @@
 package ie.wit.galleryapp.activities
 
-import GalleryAdapter
+
 import android.app.Activity
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.view.LayoutInflater
 import android.view.Menu
 import android.view.MenuItem
-import android.view.ViewGroup
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
 import ie.wit.galleryapp.R
+import ie.wit.galleryapp.adapters.GalleryAdapter
+import ie.wit.galleryapp.adapters.GalleryListener
 import ie.wit.galleryapp.databinding.ActivityGalleryListBinding
-import ie.wit.galleryapp.databinding.CardGalleryBinding
 import ie.wit.galleryapp.main.MainApp
 import ie.wit.galleryapp.models.GalleryModel
 
 
-class GalleryListActivity : AppCompatActivity() {
+class GalleryListActivity : AppCompatActivity(), GalleryListener {
 
     lateinit var app: MainApp
     private lateinit var binding: ActivityGalleryListBinding
@@ -35,7 +33,8 @@ class GalleryListActivity : AppCompatActivity() {
 
         val layoutManager = LinearLayoutManager(this)
         binding.recyclerView.layoutManager = layoutManager
-        binding.recyclerView.adapter = GalleryAdapter(app.gallerys)
+      //  binding.recyclerView.adapter = GalleryAdapter(app.gallerys)
+        binding.recyclerView.adapter = GalleryAdapter(app.gallerys.findAll(),this)
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
@@ -59,7 +58,24 @@ class GalleryListActivity : AppCompatActivity() {
         ) {
             if (it.resultCode == Activity.RESULT_OK) {
                 (binding.recyclerView.adapter)?.
-                notifyItemRangeChanged(0,app.gallerys.size)
+                notifyItemRangeChanged(0,app.gallerys.findAll().size)
+            }
+        }
+
+    override fun onGalleryClick(gallery: GalleryModel) {
+        val launcherIntent = Intent(this, GalleryActivity::class.java)
+        launcherIntent.putExtra("gallery_edit", gallery)
+        getClickResult.launch(launcherIntent)
+    }
+
+
+    private val getClickResult =
+        registerForActivityResult(
+            ActivityResultContracts.StartActivityForResult()
+        ) {
+            if (it.resultCode == Activity.RESULT_OK) {
+                (binding.recyclerView.adapter)?.
+                notifyItemRangeChanged(0,app.gallerys.findAll().size)
             }
         }
 
