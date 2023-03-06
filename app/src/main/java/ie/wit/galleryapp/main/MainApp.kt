@@ -13,9 +13,9 @@ class MainApp : Application() {
         super.onCreate()
         Timber.plant(Timber.DebugTree())
         i("Gallery started")
-        gallerys.add(GalleryModel("One", "About one..."))
-        gallerys.add(GalleryModel("Two", "About two..."))
-        gallerys.add(GalleryModel("Three", "About three..."))
+       // gallerys.add(GalleryModel("One", "About one..."))
+       // gallerys.add(GalleryModel("Two", "About two..."))
+       // gallerys.add(GalleryModel("Three", "About three..."))
 
     }
 }

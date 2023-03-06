@@ -4,4 +4,5 @@
     <string name="hint_galleryTitle">Gallery Title</string>
     <string name="hint_galleryDescription">Description </string>
     <string name="menu_addGallery">Add</string>
+    <string name="menu_cancelGallery">Cancel</string>
 </resources>
