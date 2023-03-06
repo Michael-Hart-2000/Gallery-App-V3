@@ -33,6 +33,10 @@ class GalleryActivity : AppCompatActivity() {
         binding.btnAdd.setOnClickListener() {
             gallery.title = binding.galleryTitle.text.toString()
             gallery.description = binding.description.text.toString()
+            gallery.origin = binding.origin.text.toString()
+            gallery.style = binding.style.text.toString()
+            gallery.artefact = binding.artefact.text.toString()
+
             if (gallery.title.isNotEmpty()) {
                 app.gallerys.add(gallery.copy())
                 i("add Button Pressed: ${gallery}")

@@ -1,8 +1,11 @@
 <resources>
     <string name="app_name">Gallery</string>
     <string name="button_addGallery">Add Gallery</string>
-    <string name="hint_galleryTitle">Gallery Title</string>
-    <string name="hint_galleryDescription">Description </string>
+    <string name="hint_galleryTitle">Artist Name</string>
+    <string name="hint_galleryDescription">Age </string>
+    <string name="hint_galleryOrigin">Place of Birth </string>
+    <string name="hint_galleryStyle">Style </string>
+    <string name="hint_galleryArtefact">Most Famous Work of Art </string>
     <string name="menu_addGallery">Add</string>
     <string name="menu_cancelGallery">Cancel</string>
 </resources>
