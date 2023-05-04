@@ -5,7 +5,11 @@ import kotlinx.parcelize.Parcelize
 
 @Parcelize
 data class GalleryModel(var id: Long = 0,
-                          var title: String = "",
-                          var description: String = "") : Parcelable
+                        var title: String = "",
+                        var description: String = "",
+                        var origin: String = "",
+                        var style: String = "",
+                        var artefact: String = "",
+                        var isAlive: Boolean = false) : Parcelable
 
 

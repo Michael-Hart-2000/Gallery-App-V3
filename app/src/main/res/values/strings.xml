@@ -6,8 +6,9 @@
     <string name="hint_galleryOrigin">Place of Birth </string>
     <string name="hint_galleryStyle">Style </string>
     <string name="hint_galleryArtefact">Most Famous Work of Art </string>
+    <string name="hint_galleryAlive">Is the Artist Alive </string>
     <string name="menu_addGallery">Add</string>
     <string name="menu_cancelGallery">Cancel</string>
-    <string name="enter_gallery_title"> Please enter a Gallery Title </string>
+    <string name="enter_gallery_name"> Please enter a Gallery Name </string>
     <string name="save_gallery"> Save Gallery </string>
 </resources>

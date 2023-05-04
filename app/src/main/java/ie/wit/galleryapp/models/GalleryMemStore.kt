@@ -27,6 +27,10 @@ class GalleryMemStore : GalleryStore {
         if (foundGallery != null) {
             foundGallery.title = gallery.title
             foundGallery.description = gallery.description
+            foundGallery.origin = gallery.origin
+            foundGallery.style = gallery.style
+            foundGallery.artefact = gallery.artefact
+            foundGallery.isAlive = gallery.isAlive
             logAll()
         }
     }

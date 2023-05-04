@@ -48,5 +48,12 @@
             android:layout_below="@id/galleryTitle"
             tools:text="Most Famous Work of Art" />
 
+        <TextView
+            android:id="@+id/isAlive"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/galleryTitle"
+            tools:text="Is the Artist Alive" />
+
     </RelativeLayout>
 </androidx.cardview.widget.CardView>

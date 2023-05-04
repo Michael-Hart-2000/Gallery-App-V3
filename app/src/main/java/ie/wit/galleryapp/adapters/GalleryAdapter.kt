@@ -33,6 +33,10 @@ class GalleryAdapter constructor(private var gallerys: List<GalleryModel>,
         fun bind(gallery: GalleryModel, listener: GalleryListener) {
             binding.galleryTitle.text = gallery.title
             binding.description.text = gallery.description
+            binding.origin.text = gallery.origin
+            binding.style.text = gallery.style
+            binding.artefact.text = gallery.artefact
+            binding.isAlive.text = gallery.isAlive.toString()
             binding.root.setOnClickListener { listener.onGalleryClick(gallery) }
         }
     }
