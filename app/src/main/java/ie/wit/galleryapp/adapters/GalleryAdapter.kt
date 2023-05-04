@@ -3,6 +3,7 @@ package ie.wit.galleryapp.adapters
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.squareup.picasso.Picasso
 import ie.wit.galleryapp.databinding.CardGalleryBinding
 import ie.wit.galleryapp.models.GalleryModel
 
@@ -37,6 +38,7 @@ class GalleryAdapter constructor(private var gallerys: List<GalleryModel>,
             binding.style.text = gallery.style
             binding.artefact.text = gallery.artefact
             binding.isAlive.text = gallery.isAlive.toString()
+            Picasso.get().load(gallery.image).resize(200,200).into(binding.imageIcon)
             binding.root.setOnClickListener { listener.onGalleryClick(gallery) }
         }
     }

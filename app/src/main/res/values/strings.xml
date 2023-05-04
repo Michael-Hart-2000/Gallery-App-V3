@@ -11,4 +11,7 @@
     <string name="menu_cancelGallery">Cancel</string>
     <string name="enter_gallery_name"> Please enter a Gallery Name </string>
     <string name="save_gallery"> Save Gallery </string>
+    <string name="button_addImage"> Add Image </string>
+    <string name="select_gallery_image">Select gallery image</string>
+    <string name="change_gallery_image">Change gallery image</string>
 </resources>

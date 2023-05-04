@@ -68,7 +68,6 @@ class GalleryListActivity : AppCompatActivity(), GalleryListener {
         getClickResult.launch(launcherIntent)
     }
 
-
     private val getClickResult =
         registerForActivityResult(
             ActivityResultContracts.StartActivityForResult()

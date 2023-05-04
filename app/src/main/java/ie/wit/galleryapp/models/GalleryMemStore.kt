@@ -1,7 +1,5 @@
 package ie.wit.galleryapp.models
 
-import timber.log.Timber.i
-
 var lastId = 0L
 
 internal fun getId(): Long {
@@ -31,12 +29,13 @@ class GalleryMemStore : GalleryStore {
             foundGallery.style = gallery.style
             foundGallery.artefact = gallery.artefact
             foundGallery.isAlive = gallery.isAlive
+            foundGallery.image = gallery.image
             logAll()
         }
     }
 
     private fun logAll() {
-        gallerys.forEach { i("$it") }
+        gallerys.forEach { ("$it") }
     }
 }
 
