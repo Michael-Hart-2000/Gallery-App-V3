@@ -30,6 +30,9 @@ class GalleryMemStore : GalleryStore {
             foundGallery.artefact = gallery.artefact
             foundGallery.isAlive = gallery.isAlive
             foundGallery.image = gallery.image
+            foundGallery.lat = gallery.lat
+            foundGallery.lng = gallery.lng
+            foundGallery.zoom = gallery.zoom
             logAll()
         }
     }

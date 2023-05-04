@@ -15,6 +15,7 @@ import ie.wit.galleryapp.databinding.ActivityGalleryBinding
 import ie.wit.galleryapp.helpers.showImagePicker
 import ie.wit.galleryapp.main.MainApp
 import ie.wit.galleryapp.models.GalleryModel
+import ie.wit.galleryapp.models.Location
 
 
 class GalleryActivity : AppCompatActivity() {
@@ -22,6 +23,8 @@ class GalleryActivity : AppCompatActivity() {
     private var gallery = GalleryModel()
     private lateinit var app: MainApp
     private lateinit var imageIntentLauncher : ActivityResultLauncher<Intent>
+    private lateinit var mapIntentLauncher : ActivityResultLauncher<Intent>
+    // var location = Location(52.245696, -7.139102, 15f)
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -78,6 +81,21 @@ class GalleryActivity : AppCompatActivity() {
 
         registerImagePickerCallback()
 
+        binding.galleryLocation.setOnClickListener {
+            val location = Location(52.245696, -7.139102, 15f)
+            if (gallery.zoom != 0f) {
+                location.lat =  gallery.lat
+                location.lng = gallery.lng
+                location.zoom = gallery.zoom
+            }
+            val launcherIntent = Intent(this, MapActivity::class.java)
+                .putExtra("location", location)
+            mapIntentLauncher.launch(launcherIntent)
+        }
+
+
+        registerMapCallback()
+
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
@@ -113,6 +131,28 @@ class GalleryActivity : AppCompatActivity() {
                 }
             }
     }
+
+    private fun registerMapCallback() {
+        mapIntentLauncher =
+            registerForActivityResult(ActivityResultContracts.StartActivityForResult())
+            { result ->
+                when (result.resultCode) {
+                    RESULT_OK -> {
+                        if (result.data != null) {
+                            ("Got Location ${result.data.toString()}")
+                            val location = result.data!!.extras?.getParcelable<Location>("location")!!
+                            ("Location == $location")
+                            gallery.lat = location.lat
+                            gallery.lng = location.lng
+                            gallery.zoom = location.zoom
+                        } // end of if
+                    }
+                    RESULT_CANCELED -> { } else -> { }
+                }
+            }
+    }
+
+
 }
 
 
