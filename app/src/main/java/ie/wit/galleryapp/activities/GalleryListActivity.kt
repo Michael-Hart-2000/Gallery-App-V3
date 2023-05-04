@@ -21,6 +21,8 @@ class GalleryListActivity : AppCompatActivity(), GalleryListener {
 
     lateinit var app: MainApp
     private lateinit var binding: ActivityGalleryListBinding
+    private var position: Int = 0
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -62,9 +64,10 @@ class GalleryListActivity : AppCompatActivity(), GalleryListener {
             }
         }
 
-    override fun onGalleryClick(gallery: GalleryModel) {
+    override fun onGalleryClick(gallery: GalleryModel, pos : Int) {
         val launcherIntent = Intent(this, GalleryActivity::class.java)
         launcherIntent.putExtra("gallery_edit", gallery)
+        position = pos
         getClickResult.launch(launcherIntent)
     }
 
@@ -76,7 +79,10 @@ class GalleryListActivity : AppCompatActivity(), GalleryListener {
                 (binding.recyclerView.adapter)?.
                 notifyItemRangeChanged(0,app.gallerys.findAll().size)
             }
+            else // Deleting
+                if (it.resultCode == 99)     (binding.recyclerView.adapter)?.notifyItemRemoved(position)
         }
+
 
 }
 

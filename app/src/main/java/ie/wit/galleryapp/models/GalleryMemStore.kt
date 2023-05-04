@@ -37,6 +37,11 @@ class GalleryMemStore : GalleryStore {
         }
     }
 
+    override fun delete(gallery: GalleryModel) {
+        gallerys.remove(gallery)
+    }
+
+
     private fun logAll() {
         gallerys.forEach { ("$it") }
     }

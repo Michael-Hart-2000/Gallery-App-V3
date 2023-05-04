@@ -18,17 +18,18 @@ import ie.wit.galleryapp.models.GalleryModel
 import ie.wit.galleryapp.models.Location
 
 
-class GalleryActivity : AppCompatActivity() {
+class GalleryActivity : AppCompatActivity(){
     private lateinit var binding: ActivityGalleryBinding
     private var gallery = GalleryModel()
     private lateinit var app: MainApp
     private lateinit var imageIntentLauncher : ActivityResultLauncher<Intent>
     private lateinit var mapIntentLauncher : ActivityResultLauncher<Intent>
+    var edit = false
     // var location = Location(52.245696, -7.139102, 15f)
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        var edit = false
+        edit = true
         binding = ActivityGalleryBinding.inflate(layoutInflater)
         setContentView(binding.root)
         binding.toolbarAdd.title = title
@@ -76,7 +77,7 @@ class GalleryActivity : AppCompatActivity() {
         }
 
         binding.chooseImage.setOnClickListener {
-            showImagePicker(imageIntentLauncher)
+            showImagePicker(imageIntentLauncher,this)
         }
 
         registerImagePickerCallback()
@@ -93,24 +94,27 @@ class GalleryActivity : AppCompatActivity() {
             mapIntentLauncher.launch(launcherIntent)
         }
 
-
         registerMapCallback()
 
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
         menuInflater.inflate(R.menu.menu_gallery, menu)
+        if (edit) menu.getItem(0).isVisible = true
         return super.onCreateOptionsMenu(menu)
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when (item.itemId) {
-            R.id.item_cancel -> {
+            R.id.item_delete -> {
+                setResult(99)
+                app.gallerys.delete(gallery)
                 finish()
-            }
+            }        R.id.item_cancel -> { finish() }
         }
         return super.onOptionsItemSelected(item)
     }
+
 
     private fun registerImagePickerCallback() {
         imageIntentLauncher =
@@ -120,7 +124,12 @@ class GalleryActivity : AppCompatActivity() {
                     RESULT_OK -> {
                         if (result.data != null) {
                             ("Got Result ${result.data!!.data}")
-                            gallery.image = result.data!!.data!!
+
+                            val image = result.data!!.data!!
+                            contentResolver.takePersistableUriPermission(image,
+                                Intent.FLAG_GRANT_READ_URI_PERMISSION)
+                            gallery.image = image
+
                             Picasso.get()
                                 .load(gallery.image)
                                 .into(binding.galleryImage)
@@ -131,6 +140,7 @@ class GalleryActivity : AppCompatActivity() {
                 }
             }
     }
+
 
     private fun registerMapCallback() {
         mapIntentLauncher =

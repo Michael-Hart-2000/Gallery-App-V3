@@ -16,4 +16,6 @@
     <string name="change_gallery_image">Change gallery image</string>
     <string name="button_location">Set Location</string>
     <string name="title_activity_map">MapActivity</string>
+    <string name="menu_deleteGallery">Delete</string>
+
 </resources>
