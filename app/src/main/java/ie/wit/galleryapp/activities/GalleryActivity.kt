@@ -16,9 +16,10 @@ import ie.wit.galleryapp.helpers.showImagePicker
 import ie.wit.galleryapp.main.MainApp
 import ie.wit.galleryapp.models.GalleryModel
 import ie.wit.galleryapp.models.Location
+import timber.log.Timber.Forest.i
 
+class GalleryActivity : AppCompatActivity() {
 
-class GalleryActivity : AppCompatActivity(){
     private lateinit var binding: ActivityGalleryBinding
     private var gallery = GalleryModel()
     private lateinit var app: MainApp
@@ -29,12 +30,17 @@ class GalleryActivity : AppCompatActivity(){
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        edit = true
+
+        edit = false
+
         binding = ActivityGalleryBinding.inflate(layoutInflater)
         setContentView(binding.root)
         binding.toolbarAdd.title = title
         setSupportActionBar(binding.toolbarAdd)
+
         app = application as MainApp
+
+        i("Gallery Activity started...")
 
         if (intent.hasExtra("gallery_edit")) {
             edit = true
@@ -71,7 +77,8 @@ class GalleryActivity : AppCompatActivity(){
                     app.gallerys.create(gallery.copy())
                 }
             }
-            ("add Button Pressed: $gallery")
+            i ("add Button Pressed: $gallery")
+
             setResult(RESULT_OK)
             finish()
         }
@@ -79,8 +86,6 @@ class GalleryActivity : AppCompatActivity(){
         binding.chooseImage.setOnClickListener {
             showImagePicker(imageIntentLauncher,this)
         }
-
-        registerImagePickerCallback()
 
         binding.galleryLocation.setOnClickListener {
             val location = Location(52.245696, -7.139102, 15f)
@@ -94,8 +99,8 @@ class GalleryActivity : AppCompatActivity(){
             mapIntentLauncher.launch(launcherIntent)
         }
 
+        registerImagePickerCallback()
         registerMapCallback()
-
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
@@ -110,11 +115,13 @@ class GalleryActivity : AppCompatActivity(){
                 setResult(99)
                 app.gallerys.delete(gallery)
                 finish()
-            }        R.id.item_cancel -> { finish() }
+            }
+            R.id.item_cancel -> {
+                finish()
+            }
         }
         return super.onOptionsItemSelected(item)
     }
-
 
     private fun registerImagePickerCallback() {
         imageIntentLauncher =
@@ -151,7 +158,7 @@ class GalleryActivity : AppCompatActivity(){
                         if (result.data != null) {
                             ("Got Location ${result.data.toString()}")
                             val location = result.data!!.extras?.getParcelable<Location>("location")!!
-                            ("Location == $location")
+                            i ("Location == $location")
                             gallery.lat = location.lat
                             gallery.lng = location.lng
                             gallery.zoom = location.zoom
@@ -161,8 +168,6 @@ class GalleryActivity : AppCompatActivity(){
                 }
             }
     }
-
-
 }
 
 

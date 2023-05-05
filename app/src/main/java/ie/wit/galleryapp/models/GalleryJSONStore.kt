@@ -40,11 +40,10 @@ class GalleryJSONStore(private val context: Context) : GalleryStore {
         serialize()
     }
 
-    override fun delete(gallery: GalleryModel) {
-        gallerys.remove(gallery)
-        serialize()
+    override fun findById(id:Long) : GalleryModel? {
+        val foundGallery: GalleryModel? = gallerys.find { it.id == id }
+        return foundGallery
     }
-
 
     override fun update(gallery: GalleryModel) {
         val gallerysList = findAll() as ArrayList<GalleryModel>
@@ -72,6 +71,11 @@ class GalleryJSONStore(private val context: Context) : GalleryStore {
     private fun deserialize() {
         val jsonString = read(context, JSON_FILE)
         gallerys = gsonBuilder.fromJson(jsonString, listType)
+    }
+
+    override fun delete(gallery: GalleryModel) {
+        gallerys.remove(gallery)
+        serialize()
     }
 
     private fun logAll() {

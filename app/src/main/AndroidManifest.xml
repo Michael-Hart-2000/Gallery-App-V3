@@ -2,6 +2,9 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
 
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.ACCESS_MEDIA_LOCATION" />
+
     <application
         android:name="ie.wit.galleryapp.main.MainApp"
         android:allowBackup="true"
@@ -13,6 +16,12 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.GalleryApp"
         tools:targetApi="31">
+        <activity
+            android:name=".activities.GalleryMapsActivity"
+            android:exported="false"
+            android:label="@string/title_activity_gallery_maps"
+            android:theme="@style/Theme.GalleryApp.NoActionBar" />
+
         <meta-data
             android:name="com.google.android.geo.API_KEY"
             android:value="${MAPS_API_KEY}" />
@@ -40,6 +49,5 @@
                 android:value="" />
         </activity>
     </application>
-    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
-    <uses-permission android:name="android.permission.ACCESS_MEDIA_LOCATION" />
+
 </manifest>

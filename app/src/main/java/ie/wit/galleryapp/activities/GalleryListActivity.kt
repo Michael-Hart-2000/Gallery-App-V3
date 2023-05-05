@@ -1,6 +1,5 @@
 package ie.wit.galleryapp.activities
 
-
 import android.app.Activity
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
@@ -16,13 +15,11 @@ import ie.wit.galleryapp.databinding.ActivityGalleryListBinding
 import ie.wit.galleryapp.main.MainApp
 import ie.wit.galleryapp.models.GalleryModel
 
-
 class GalleryListActivity : AppCompatActivity(), GalleryListener {
 
     lateinit var app: MainApp
     private lateinit var binding: ActivityGalleryListBinding
     private var position: Int = 0
-
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -49,6 +46,10 @@ class GalleryListActivity : AppCompatActivity(), GalleryListener {
             R.id.item_add -> {
                 val launcherIntent = Intent(this, GalleryActivity::class.java)
                 getResult.launch(launcherIntent)
+            }
+            R.id.item_map -> {
+                val launcherIntent = Intent(this, GalleryMapsActivity::class.java)
+                mapIntentLauncher.launch(launcherIntent)
             }
         }
         return super.onOptionsItemSelected(item)
@@ -80,9 +81,14 @@ class GalleryListActivity : AppCompatActivity(), GalleryListener {
                 notifyItemRangeChanged(0,app.gallerys.findAll().size)
             }
             else // Deleting
-                if (it.resultCode == 99)     (binding.recyclerView.adapter)?.notifyItemRemoved(position)
+                if (it.resultCode == 99)
+                        (binding.recyclerView.adapter)?.notifyItemRemoved(position)
         }
 
+    private val mapIntentLauncher =
+        registerForActivityResult(
+            ActivityResultContracts.StartActivityForResult()
+        )    { }
 
 }
 

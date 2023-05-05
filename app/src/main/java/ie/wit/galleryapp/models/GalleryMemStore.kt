@@ -1,5 +1,7 @@
 package ie.wit.galleryapp.models
 
+import timber.log.Timber.Forest.i
+
 var lastId = 0L
 
 internal fun getId(): Long {
@@ -37,13 +39,17 @@ class GalleryMemStore : GalleryStore {
         }
     }
 
+    private fun logAll() {
+        gallerys.forEach { i("$it") }
+    }
+
     override fun delete(gallery: GalleryModel) {
         gallerys.remove(gallery)
     }
 
-
-    private fun logAll() {
-        gallerys.forEach { ("$it") }
+    override fun findById(id:Long) : GalleryModel? {
+        val foundGallery: GalleryModel? = gallerys.find { it.id == id }
+        return foundGallery
     }
 }
 

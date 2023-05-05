@@ -10,6 +10,7 @@ import ie.wit.galleryapp.models.GalleryModel
 interface GalleryListener {
     fun onGalleryClick(gallery: GalleryModel, position: Int)
 }
+
 class GalleryAdapter constructor(private var gallerys: List<GalleryModel>,
                                    private val listener: GalleryListener) :
     RecyclerView.Adapter<GalleryAdapter.MainHolder>() {
