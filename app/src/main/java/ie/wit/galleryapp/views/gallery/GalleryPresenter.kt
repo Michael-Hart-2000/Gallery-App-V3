@@ -31,9 +31,9 @@ class GalleryPresenter(private val view: GalleryView) {
         registerImagePickerCallback()
         registerMapCallback()
     }
-    fun doAddOrSave(title: String, description: String, origin: String, style:String, artefact:String, isAlive:Boolean) {
+    fun doAddOrSave(title: String, age: Int, origin: String, style:String, artefact:String, isAlive:Boolean) {
         gallery.title = title
-        gallery.description = description
+        gallery.age = age
         gallery.origin = origin
         gallery.style = style
         gallery.artefact = artefact
@@ -68,9 +68,9 @@ class GalleryPresenter(private val view: GalleryView) {
             .putExtra("location", location)
         mapIntentLauncher.launch(launcherIntent)
     }
-    fun cacheGallery (title: String, description: String, origin: String, style:String, artefact:String, isAlive:Boolean) {
+    fun cacheGallery (title: String, age: Int, origin: String, style:String, artefact:String, isAlive:Boolean) {
         gallery.title = title;
-        gallery.description = description
+        gallery.age = age
         gallery.origin = origin
         gallery.style = style
         gallery.artefact = artefact

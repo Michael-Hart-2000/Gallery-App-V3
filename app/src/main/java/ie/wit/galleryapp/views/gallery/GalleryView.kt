@@ -31,7 +31,7 @@ class GalleryView : AppCompatActivity() {
 
         binding.chooseImage.setOnClickListener {
             presenter.cacheGallery( binding.galleryTitle.text.toString(),
-                                    binding.description.text.toString(),
+                                    binding.age.text.toString().toInt(),
                                     binding.origin.text.toString(),
                                     binding.style.text.toString(),
                                     binding.artefact.text.toString(),
@@ -41,7 +41,7 @@ class GalleryView : AppCompatActivity() {
 
         binding.galleryLocation.setOnClickListener {
             presenter.cacheGallery( binding.galleryTitle.text.toString(),
-                                    binding.description.text.toString(),
+                                    binding.age.text.toString().toInt(),
                                     binding.origin.text.toString(),
                                     binding.style.text.toString(),
                                     binding.artefact.text.toString(),
@@ -54,9 +54,9 @@ class GalleryView : AppCompatActivity() {
                 Snackbar.make(binding.root, R.string.enter_gallery_name, Snackbar.LENGTH_LONG)
                     .show()
             } else {
-                // presenter.cacheGallery(binding.galleryTitle.text.toString(), binding.description.text.toString())
+                // presenter.cacheGallery(binding.galleryTitle.text.toString(), binding.age.text.toString())
                 presenter.doAddOrSave(  binding.galleryTitle.text.toString(),
-                                        binding.description.text.toString(),
+                                        binding.age.text.toString().toInt(),
                                         binding.origin.text.toString(),
                                         binding.style.text.toString(),
                                         binding.artefact.text.toString(),
@@ -86,7 +86,7 @@ class GalleryView : AppCompatActivity() {
 
     fun showGallery(gallery: GalleryModel) {
         binding.galleryTitle.setText(gallery.title)
-        binding.description.setText(gallery.description)
+        binding.age.setText(gallery.age.toString())
         binding.origin.setText(gallery.origin)
         binding.style.setText(gallery.style)
         binding.artefact.setText(gallery.artefact)

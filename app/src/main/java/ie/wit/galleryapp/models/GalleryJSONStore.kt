@@ -50,7 +50,7 @@ class GalleryJSONStore(private val context: Context) : GalleryStore {
         var foundGallery: GalleryModel? = gallerysList.find { p -> p.id == gallery.id }
         if (foundGallery != null) {
             foundGallery.title = gallery.title
-            foundGallery.description = gallery.description
+            foundGallery.age = gallery.age
             foundGallery.origin = gallery.origin
             foundGallery.style = gallery.style
             foundGallery.artefact = gallery.artefact

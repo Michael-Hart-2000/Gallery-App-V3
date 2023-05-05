@@ -78,7 +78,7 @@ class GalleryMapsActivity : AppCompatActivity(), GoogleMap.OnMarkerClickListener
         val tag = marker.tag as Long
         val gallery = app.gallerys.findById(tag)
         contentBinding.currentTitle.text = gallery!!.title
-        contentBinding.currentDescription.text = gallery.description
+        contentBinding.currentAge.text = gallery.age.toString()
         Picasso.get().load(gallery.image).into(contentBinding.currentImage)
         return false
     }

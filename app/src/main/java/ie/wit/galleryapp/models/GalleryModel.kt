@@ -7,7 +7,7 @@ import kotlinx.parcelize.Parcelize
 @Parcelize
 data class GalleryModel(var id: Long = 0,
                         var title: String = "",
-                        var description: String = "",
+                        var age: Int = 0,
                         var origin: String = "",
                         var style: String = "",
                         var artefact: String = "",

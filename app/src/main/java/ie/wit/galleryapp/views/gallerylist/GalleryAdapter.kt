@@ -34,7 +34,7 @@ class GalleryAdapter constructor(private var gallerys: List<GalleryModel>,
 
         fun bind(gallery: GalleryModel, listener: GalleryListener) {
             binding.galleryTitle.text = gallery.title
-            binding.description.text = gallery.description
+            binding.age.text = gallery.age.toString()
             binding.origin.text = gallery.origin
            // binding.style.text = gallery.style
            // binding.artefact.text = gallery.artefact
