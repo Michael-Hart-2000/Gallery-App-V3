@@ -36,9 +36,9 @@ class GalleryAdapter constructor(private var gallerys: List<GalleryModel>,
             binding.galleryTitle.text = gallery.title
             binding.description.text = gallery.description
             binding.origin.text = gallery.origin
-            binding.style.text = gallery.style
-            binding.artefact.text = gallery.artefact
-            binding.isAlive.text = gallery.isAlive.toString()
+           // binding.style.text = gallery.style
+           // binding.artefact.text = gallery.artefact
+           // binding.isAlive.text = gallery.isAlive.toString()
             Picasso.get().load(gallery.image).resize(200,200).into(binding.imageIcon)
             binding.root.setOnClickListener { listener.onGalleryClick(gallery,adapterPosition) }
         }
