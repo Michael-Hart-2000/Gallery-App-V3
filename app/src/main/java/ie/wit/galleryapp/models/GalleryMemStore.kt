@@ -25,7 +25,7 @@ class GalleryMemStore : GalleryStore {
     override fun update(gallery: GalleryModel) {
         var foundGallery: GalleryModel? = gallerys.find { p -> p.id == gallery.id }
         if (foundGallery != null) {
-            foundGallery.title = gallery.title
+            foundGallery.name = gallery.name
             foundGallery.age = gallery.age
             foundGallery.origin = gallery.origin
             foundGallery.style = gallery.style

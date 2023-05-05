@@ -19,6 +19,7 @@ class MainApp : Application() {
         //gallerys = GalleryMemStore()
         i("Gallery started")
 
+
        // gallerys.add(GalleryModel("One", "About one..."))
        // gallerys.add(GalleryModel("Two", "About two..."))
        // gallerys.add(GalleryModel("Three", "About three..."))

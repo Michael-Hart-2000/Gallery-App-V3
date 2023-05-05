@@ -1,9 +1,11 @@
 package ie.wit.galleryapp.views.gallery
 
+import android.app.Dialog
 import android.net.Uri
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
+import android.widget.Button
 import androidx.appcompat.app.AppCompatActivity
 import com.google.android.material.snackbar.Snackbar
 import com.squareup.picasso.Picasso
@@ -21,11 +23,13 @@ class GalleryView : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-
         binding = ActivityGalleryBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
         binding.toolbarAdd.title = title
         setSupportActionBar(binding.toolbarAdd)
+
+
 
         presenter = GalleryPresenter(this)
 
@@ -85,7 +89,7 @@ class GalleryView : AppCompatActivity() {
     }
 
     fun showGallery(gallery: GalleryModel) {
-        binding.galleryTitle.setText(gallery.title)
+        binding.galleryTitle.setText(gallery.name)
         binding.age.setText(gallery.age.toString())
         binding.origin.setText(gallery.origin)
         binding.style.setText(gallery.style)

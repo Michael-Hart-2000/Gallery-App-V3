@@ -49,7 +49,7 @@ class GalleryJSONStore(private val context: Context) : GalleryStore {
         val gallerysList = findAll() as ArrayList<GalleryModel>
         var foundGallery: GalleryModel? = gallerysList.find { p -> p.id == gallery.id }
         if (foundGallery != null) {
-            foundGallery.title = gallery.title
+            foundGallery.name = gallery.name
             foundGallery.age = gallery.age
             foundGallery.origin = gallery.origin
             foundGallery.style = gallery.style

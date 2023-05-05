@@ -1,8 +1,10 @@
 package ie.wit.galleryapp.views.gallerylist
 
+import android.app.Dialog
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
+import android.widget.Button
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import ie.wit.galleryapp.R
@@ -23,6 +25,18 @@ class GalleryListView : AppCompatActivity(), GalleryListener {
         super.onCreate(savedInstanceState)
         binding = ActivityGalleryListBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+        val dialog = Dialog(this)
+        dialog.setContentView(R.layout.activity_welcome)
+        dialog.setCancelable(true)
+
+        val dialogButton = dialog.findViewById<Button>(R.id.dialog_button)
+        dialogButton.setOnClickListener {
+            dialog.dismiss()
+        }
+
+        dialog.show()
+
         binding.toolbar.title = title
         setSupportActionBar(binding.toolbar)
         presenter = GalleryListPresenter(this)

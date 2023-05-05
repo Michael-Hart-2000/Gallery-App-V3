@@ -33,7 +33,7 @@ class GalleryAdapter constructor(private var gallerys: List<GalleryModel>,
         RecyclerView.ViewHolder(binding.root) {
 
         fun bind(gallery: GalleryModel, listener: GalleryListener) {
-            binding.galleryTitle.text = gallery.title
+            binding.galleryTitle.text = gallery.name
             binding.age.text = gallery.age.toString()
             binding.origin.text = gallery.origin
            // binding.style.text = gallery.style

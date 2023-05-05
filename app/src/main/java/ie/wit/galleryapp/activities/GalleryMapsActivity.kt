@@ -35,6 +35,7 @@ class GalleryMapsActivity : AppCompatActivity(), GoogleMap.OnMarkerClickListener
             map = it
             configureMap()
         }
+
     }
 
     override fun onDestroy() {
@@ -66,7 +67,7 @@ class GalleryMapsActivity : AppCompatActivity(), GoogleMap.OnMarkerClickListener
         map.uiSettings.isZoomControlsEnabled = true
         app.gallerys.findAll().forEach {
             val loc = LatLng(it.lat, it.lng)
-            val options = MarkerOptions().title(it.title).position(loc)
+            val options = MarkerOptions().title(it.name).position(loc)
             map.addMarker(options)?.tag = it.id
             map.moveCamera(CameraUpdateFactory.newLatLngZoom(loc, it.zoom))
             map.setOnMarkerClickListener(this)
@@ -77,7 +78,7 @@ class GalleryMapsActivity : AppCompatActivity(), GoogleMap.OnMarkerClickListener
         //val gallery = marker.tag as GalleryModel
         val tag = marker.tag as Long
         val gallery = app.gallerys.findById(tag)
-        contentBinding.currentTitle.text = gallery!!.title
+        contentBinding.currentTitle.text = gallery!!.name
         contentBinding.currentAge.text = gallery.age.toString()
         Picasso.get().load(gallery.image).into(contentBinding.currentImage)
         return false
