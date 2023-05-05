@@ -12,12 +12,12 @@
     <string name="enter_gallery_name"> Please enter a Gallery Name </string>
     <string name="save_gallery"> Save Gallery </string>
     <string name="button_addImage"> Add Image </string>
-    <string name="select_gallery_image">Select gallery image</string>
-    <string name="change_gallery_image">Change gallery image</string>
+    <string name="select_gallery_image">Select Artist image</string>
+    <string name="change_gallery_image">Change Artist image</string>
     <string name="button_location">Set Location</string>
     <string name="title_activity_map">MapActivity</string>
     <string name="menu_deleteGallery">Delete</string>
-    <string name="title_activity_gallery_maps">Map of All Galleries</string>
+    <string name="title_activity_gallery_maps">Map of All Artists</string>
     <!-- Strings used for fragments for navigation -->
     <string name="first_fragment_label">First Fragment</string>
     <string name="second_fragment_label">Second Fragment</string>
